@@ -3,7 +3,7 @@
 /**
  * main - print number between 00 t0 99
  *
- * Return; always 0 (Success)
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
