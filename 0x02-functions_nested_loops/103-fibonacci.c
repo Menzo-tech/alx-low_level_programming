@@ -17,7 +17,7 @@ int main(void)
 		fn = a1 + a2;
 		a1 = a2;
 		a2 = fn;
-		if (n1 % 2 == 0)
+		if (a1 % 2 == 0)
 		{
 			afn += a1;
 		}
