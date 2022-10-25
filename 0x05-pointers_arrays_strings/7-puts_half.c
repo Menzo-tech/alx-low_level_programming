@@ -9,7 +9,7 @@ void puts_half(char *str)
 {
 	int poll = 0, i;
 
-	while (count >= 0)
+	while (poll >= 0)
 	{
 		if (str[poll] == '\0')
 			break;
