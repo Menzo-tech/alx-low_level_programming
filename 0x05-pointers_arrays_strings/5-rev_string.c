@@ -3,9 +3,10 @@
 
 /**
  * rev_string - reverse a string
- * @s:String to reverse
+ * @s: string to reverse
  * Return: 0
  */
+
 void rev_string(char *s)
 {
 	int j = 0;
