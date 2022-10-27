@@ -10,7 +10,7 @@ char *string_toupper(char *s)
 
 	while (s[poll] != '\0')
 	{
-		if ((s[poll] >= a) && (s[poll] < z))
+		if ((s[poll] >= 'a') && (s[poll] < 'z'))
 			s[poll] = s[poll] - 32;
 		poll++;
 	}
