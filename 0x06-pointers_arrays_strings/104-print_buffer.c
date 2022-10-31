@@ -2,43 +2,80 @@
 #include <stdio.h>
 
 /**
- * print_buffer - print a buffer 10 bytes a time
- * @b: buffer to be printed
+ * printable_ASCII - determines if n is a printable ASCII char
+ * @n: integer
+ * Return: 1 if true, otherwise 0
+ */
+int printable_ASCII(int n)
+{
+	return (n >= 32 && n <= 126);
+}
+
+/**
+ * print_hexes - print hex value for string b in formatted form
+ * @b: string to print
+ * @start: starting position
+ * @end: ending position
+ */
+void print_hexes(char *b, int start, int end)
+{
+	int i = 0;
+
+	while (i < 10)
+	{
+		if (i < end)
+			printf("%02x", *(b + start + i));
+		else
+			printf(" ");
+		if (i % 2)
+			printf(" ");
+		i++;
+	}
+}
+
+/**
+ * print_ASCII - print ASCII value for string b
+ * formatted to replace nonprintable char with '.'
+ * @b: string to print
+ * @start: starting position
+ * @end: ending position
+ */
+void print_ASCII(char *b, int start, int end)
+{
+	int ch, i = 0;
+
+	while (i < end)
+	{
+		ch = *(b + i + start);
+		if (!printable_ASCII(ch))
+			ch = 46;
+		printf("%c", ch);
+		i++;
+	}
+}
+
+/**
+ * print_buffer - print a buffer
+ * @b: string
  * @size: size of buffer
- * Return: no return
  */
 void print_buffer(char *b, int size)
 {
-	int j, k, l;
+	int start, end;
 
-	if (size <= 0)
-		printf("\n");
-	else
+	if (size > 0)
 	{
-		for (j = 0; j < size; j += 10)
+		for (start = 0; start < size; start += 10)
 		{
-			printf("%.8x:", j);
-			for (k = j; k < j + 10; k++)
-			{
-				if (k % 2 == 0)
-					printf(" ");
-				if (k < size)
-					printf("%.2x", *(b + k));
-				else
-					printf(" ");
-			}
-			printf(" ");
-			for (l = j; l < j + 10; l++)
-			{
-				if (l >= size)
-					break;
-				if (*(b + l) < 32 || *(b + l) > 126)
-					printf("%c", '.');
-				else
-					printf("%c", *(b + l));
-			}
+			end = (size - start < 10) ? size - start : 10;
+			printf("%08x: ", start);
+			print_hexes(b, start, end);
+			print_ASCII(b, start, end);
 			printf("\n");
 		}
 	}
+	else
+		printf("\n");
 }
+
 
