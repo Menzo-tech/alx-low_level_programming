@@ -5,24 +5,16 @@
  * *_strchr - locate a character in a string
  * @s: string to search
  * @c: char of string
- * Return: a pointer to first occurence of char
- * else NULL
+ * Return: pointer to firrst occurence of character c
  */
-
 char *_strchr(char *s, char c)
 {
-	int a;
+	unsigned int i = 0
 
-	while (1)
-	{
-		a = (*s)++;
-		if (a == c)
-		{
-			return (s - 1);
-		}
-		if (a == 0)
-		{
-			return (NULL);
-		}
-	}
+		for (; *(s + i) != '\0'; i++)
+			if (*(s + i) == c)
+				return (s + i);
+	if (*(s + i) == c)
+		return (s + i);
+	return ('\0');
 }
